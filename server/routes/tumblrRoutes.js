@@ -4,7 +4,7 @@ const userController = require('../controllers/userController');
 
 router.get('/getProperties');
 router.post('/addProperties');
-router.post('/login');
-router.post('registration');
+router.post('/login', userController.login);
+router.post('registration', userController.createUser);
 
 module.exports = router;
