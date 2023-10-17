@@ -1,4 +1,4 @@
-const User = require('../../properties/models/PropertyModel');
+const User = require('../../properties/models/properties.model');
 const bcrypt = require("bcrypt");
 const dotenv = require('dotenv');
 dotenv.config();

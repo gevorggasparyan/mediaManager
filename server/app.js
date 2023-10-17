@@ -3,7 +3,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/tumblr', require('./users/routes/userRoutes'));
+app.use('/tumblr', require('./users/routes/user.routes'));
 require('../server/config/mongoConfig')
 
 app.listen(process.env.PORT, () => {
