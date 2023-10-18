@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken');
 const propertiesService = require('../services/properties.service')
 
 exports.addCredentials = async (req,res) => {
