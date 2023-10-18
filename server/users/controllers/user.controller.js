@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 const userService = require('../services/user.service');
-const playwright = require('playwright');
 
 exports.register = async (req, res) => {
     try {
@@ -51,11 +50,28 @@ exports.activation = async (req, res) => {
 
         res.status(200).send(`
             <html>
-                <body>
-                    <p>Dear User,</p>
-                    <p>Your account is <b>activated successfully</b>!</p>
-                    <p>You can close this tab.</p>
-                </body>
+              <head>
+                <style>
+                  body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+                    text-align: center;
+                    padding: 20px;
+                  }
+                  p {
+                    font-size: 18px;
+                    margin: 10px 0;
+                  }
+                  b {
+                    color: #00a900;
+                  }
+                </style>
+              </head>
+              <body>
+                <p>Dear User,</p>
+                <p>Your account is <b>activated successfully</b>!</p>
+                <p>You can close this tab.</p>
+              </body>
             </html>
         `);
     } catch (error) {

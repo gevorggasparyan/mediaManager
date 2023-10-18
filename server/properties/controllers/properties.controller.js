@@ -1,4 +1,4 @@
-const propertiesService = require('../services/properties.service')
+const propertiesService = require('../services/properties.service');
 
 exports.addCredentials = async (req,res) => {
     try{

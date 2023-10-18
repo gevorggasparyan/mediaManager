@@ -41,10 +41,14 @@ exports.createUser = async (userData) => {
             to: email,
             subject: 'Activate your account',
             html: `
-                <p>Dear User,</p>
-                <p>Click the link below to activate your account:</p>
-                <b><a href="http://localhost:3000/user/activate/${activationLink}">Activate Account</a></b>
-                <p>If you have trouble clicking the link, please copy and paste it into your browser's address bar.</p>`
+                <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
+                    <p style="font-size: 16px; color: #333;">Dear User,</p>
+                    <p style="font-size: 16px; color: #333;">Click the link below to activate your account:</p>
+                    <p style="font-size: 16px;">
+                        <a href="http://localhost:3000/user/activate/${activationLink}" style="background-color: #007BFF; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Activate Account</a>
+                    </p>
+                </div>
+                `
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
