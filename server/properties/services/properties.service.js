@@ -12,7 +12,7 @@ exports.addCredentials = async ({ email, password, userId, status }) => {
     });
     return tumblrCredential.save();
 }
-//get by query
+
 exports.getAllUsers = async (userId) => {
     return Property.find({userId: userId});
 }
