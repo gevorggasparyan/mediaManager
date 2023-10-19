@@ -18,8 +18,8 @@ exports.getAllProperties = async (req, res) => {
     try {
         const userId = req.user.userId;
         console.log('User ID:', userId);
-        const books = await propertiesService.getAllUsers(userId);
-        res.json(books);
+        const allProperties = await propertiesService.getAllUsers(userId);
+        res.json(allProperties);
     } catch (err) {
         res.status(500).json({ error: 'Unable to fetch books' });
     }

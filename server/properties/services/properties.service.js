@@ -14,5 +14,5 @@ exports.addCredentials = async ({ email, password, userId, status }) => {
 }
 //get by query
 exports.getAllUsers = async (userId) => {
-    return Property.find({userId});
+    return Property.find({userId: userId});
 }

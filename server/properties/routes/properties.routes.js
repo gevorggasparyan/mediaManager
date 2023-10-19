@@ -6,5 +6,5 @@ const tumblrControllers = require('../controllers/tumblr.controller');
 
 router.post('/addCredentials', jwtMiddleware, propertyControllers.addCredentials);
 // router.post('/loginAndScrapeTumblr', jwtMiddleware, tumblrControllers.loginAndScrapeTumblr);
-//get from db properties by query
+router.get('/allProperties', jwtMiddleware, propertyControllers.getAllProperties);
 module.exports = router;
