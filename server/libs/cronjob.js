@@ -1,11 +1,13 @@
-// libs/cron.js
 const cron = require('node-cron');
 const axios = require('axios');
 
 const startScrapingCron = () => {
     cron.schedule('*/5 * * * * *', async () => {
         try {
-            const response = await axios.get('http://localhost:3000/credentials/allProperties', {
+            const criteria = {
+                status: 'unstarted', // or any other criteria you need
+            };
+            const response = await axios.get('http://localhost:3000/credentials/allProperties?' + new URLSearchParams(criteria), {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
