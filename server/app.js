@@ -3,7 +3,7 @@ const app = express();
 
 app.use(express.json());
 app.use('/user', require('./users/routes/user.routes'));
-app.use('/credentials', require('./properties/routes/properties.routes'));
+app.use('/properties', require('./properties/routes/properties.routes'));
 require('../server/config/mongoConfig')
 
 app.listen(process.env.PORT, () => {

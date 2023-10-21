@@ -1,7 +1,7 @@
 const Property = require('../models/properties.model');
 const bcrypt = require("bcrypt");
 
-exports.addCredentials = async ({ email, password, userId, status }) => {
+exports.addProperty = async ({ email, password, userId, status }) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const tumblrCredential = new Property({
         email,
@@ -13,6 +13,6 @@ exports.addCredentials = async ({ email, password, userId, status }) => {
     return tumblrCredential.save();
 }
 
-exports.getAllUsers = async (userId) => {
-    return Property.find({userId: userId});
+exports.getAllProperties = async (query) => {
+    return Property.find(query);
 }

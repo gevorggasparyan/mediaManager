@@ -5,7 +5,7 @@ const accountSchema = new mongoose.Schema({
     name: String,
     accountUrl: String,
     userId: String, //from token
-    propertyId: String, //to take property type
+    propertyId: String, //reference to properties
     status: String
 },{
     collection: 'account'

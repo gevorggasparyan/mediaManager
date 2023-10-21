@@ -3,7 +3,7 @@ const router = express.Router();
 const propertyControllers = require('../controllers/properties.controller');
 const jwtMiddleware = require('../../middlewares/jwtMiddleware');
 
-router.post('/addCredentials', jwtMiddleware, propertyControllers.addCredentials);
+router.post('/addProperty', jwtMiddleware, propertyControllers.addProperty);
 router.get('/allProperties', jwtMiddleware, propertyControllers.getAllProperties);
 
 module.exports = router;
