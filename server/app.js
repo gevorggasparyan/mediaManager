@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
-app.use('/user', require('./users/routes/user.routes'));
-app.use('/properties', require('./properties/routes/properties.routes'));
+app.use('/user', require('./users/user.routes'));
+app.use('/properties', require('./properties/properties.routes'));
 require('../server/config/mongoConfig')
 
 app.listen(process.env.PORT, () => {

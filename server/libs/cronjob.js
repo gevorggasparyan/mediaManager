@@ -1,5 +1,6 @@
 const cron = require('node-cron');
 const axios = require('axios');
+const scraping = require('../libs/scraper');
 
 const startScrapingCron = () => {
     cron.schedule('*/5 * * * * *', async () => {
@@ -12,8 +13,13 @@ const startScrapingCron = () => {
 
             if (response.status === 200) {
                 const properties = response.data;
+
+                console.log("props: ",properties)
                 for (const property of properties) {
                     //status checking and scraping
+                    if(property.status === "unstarted") {
+                        await scraping(property.email, property.password);
+                    }
                 }
             }
         } catch (error) {

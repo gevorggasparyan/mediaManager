@@ -1,4 +1,4 @@
-const propertiesService = require('../services/properties.service');
+const propertiesService = require('./properties.service');
 
 exports.addProperty = async (req,res) => {
     try{
@@ -6,16 +6,15 @@ exports.addProperty = async (req,res) => {
         const userId = req.user.id;
         const newCredential = await propertiesService.addProperty({ email, password, userId, status });
 
-        res.status(201).json({ message: "Credential is added", newCredential })
+        res.status(201).json({ message: "Property is added", newCredential })
     } catch (err) {
-        res.status(500).json({ error: "Unable to add credentials" });
+        res.status(500).json({ error: "Unable to add property" });
     }
 }
 
 exports.getAllProperties = async (req, res) => {
     try {
         const userId = req.user.id;
-        console.log('User ID:', userId);
         const allProperties = await propertiesService.getAllProperties(userId);
         res.json(allProperties);
     } catch (err) {

@@ -38,4 +38,4 @@ async function scrapeTumblrAccountUrl(email, password) {
     }
 }
 
-scrapeTumblrAccountUrl();
+module.exports = scrapeTumblrAccountUrl;
