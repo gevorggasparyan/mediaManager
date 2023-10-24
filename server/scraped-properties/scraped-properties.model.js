@@ -4,7 +4,7 @@ const scrapedPropertySchema = new mongoose.Schema({
     accountType: String,
     userName: String,
     accountUrl: String,
-    propertyId: mongoose.Types.ObjectId //reference to properties
+    propertyId: mongoose.Types.ObjectId //reference to properties OR mongoose.ObjectId
 },{
     collection: 'scrapedProperty'
 });

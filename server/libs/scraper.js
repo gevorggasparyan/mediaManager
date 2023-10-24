@@ -9,7 +9,7 @@ async function scrapeTumblrAccountUrl(email, password) {
         await page.goto('https://www.tumblr.com/login');
         console.log("went to browser")
         await page.fill('input[name="email"]', email);
-        await page.fill('input[name="password"]', password);
+        await page.fill('input[name="password"]', password); //decryptedPass
         console.log("properties inputted")
         await page.click('button[type="submit"]');
 
