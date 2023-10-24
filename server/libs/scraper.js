@@ -1,11 +1,11 @@
-const { chromium } = require('playwright');
+const { firefox} = require('playwright');
 
 async function scrapeTumblrAccountUrl(email, password) {
-    const browser = await chromium.launch();
+    const browser = await firefox.launch({ headless: false });
     const page = await browser.newPage();
 
+    //const decryptedPass = decryption...
     try {
-
         await page.goto('https://www.tumblr.com/login');
         console.log("went to browser")
         await page.fill('input[name="email"]', email);
@@ -19,13 +19,11 @@ async function scrapeTumblrAccountUrl(email, password) {
                 const href = link.getAttribute('href');
                 const username = href.split('/blog/')[1];
                 return {
-                    username,
+                    userName: username,
                     href: `https://www.tumblr.com${href}`,
                 };
             })
         );
-
-        // const blogNames = blogProperties.map(blog => blog.username);
 
         console.log("blog properties: ", blogProperties);
         return blogProperties;

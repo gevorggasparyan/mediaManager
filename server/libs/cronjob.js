@@ -14,7 +14,6 @@ const startScrapingCron = (req, res) => {
             if (response.status === 200) {
                 const properties = response.data;
 
-                console.log("props: ",properties)
                 for (const property of properties) {
 
                     //status checking and scraping
@@ -28,14 +27,15 @@ const startScrapingCron = (req, res) => {
                         const scrapedData = await scraping(property.email, property.password);
 
                         for (const blogProperty of scrapedData) {
+                            console.log("blog name:",blogProperty.userName);
                             const response = await axios.post('http://localhost:3000/scrapedData/addScrapedData', {
                                 accountType: property.accountType,
-                                userName: blogProperty.username,
+                                userName: blogProperty.userName,
                                 accountUrl: blogProperty.href,
                                 propertyId: property._id
                             });
 
-                            console.log("Response: ", response)
+                            console.log("Response: ", response.data)
                         }
                     }
 
