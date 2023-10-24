@@ -7,14 +7,14 @@ async function scrapeTumblrAccountUrl(email, password) {
     try {
 
         await page.goto('https://www.tumblr.com/login');
-
+        console.log("went to browser")
         await page.fill('input[name="email"]', email);
         await page.fill('input[name="password"]', password);
-        console.log("inputted")
+        console.log("properties inputted")
         await page.click('button[type="submit"]');
 
         await page.click('.UyyJb');
-        const blogURLs = await page.$$eval('.wmRou', links =>
+        const blogProperties = await page.$$eval('.wmRou', links =>
             links.map(link => {
                 const href = link.getAttribute('href');
                 const username = href.split('/blog/')[1];
@@ -25,11 +25,10 @@ async function scrapeTumblrAccountUrl(email, password) {
             })
         );
 
-        const blogNames = blogURLs.map(blog => blog.username);
+        // const blogNames = blogProperties.map(blog => blog.username);
 
-        console.log("urls: ", blogURLs);
-        console.log("names: ", blogNames);
-        return blogURLs;
+        console.log("blog properties: ", blogProperties);
+        return blogProperties;
     } catch (error) {
         console.error('An error occurred:', error);
         return null;

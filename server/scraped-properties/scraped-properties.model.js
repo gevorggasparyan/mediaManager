@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 
-const accountSchema = new mongoose.Schema({
+const scrapedPropertySchema = new mongoose.Schema({
     accountType: String,
     name: String,
     accountUrl: String,
-    userId: String, //from token
-    propertyId: String, //reference to properties
-    status: String
+    //userId: String, //from token
+    propertyId: String//reference to properties
 },{
-    collection: 'account'
+    collection: 'scrapedProperty'
 });
 
-module.exports = mongoose.model('Account', accountSchema);
+module.exports = mongoose.model('scrapedProperty', scrapedPropertySchema);
