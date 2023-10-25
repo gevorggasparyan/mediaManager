@@ -1,9 +1,8 @@
 const cron = require('node-cron');
 const axios = require('axios');
 const scraping = require('../libs/scraper');
-const express = require('express')
 
-const startScrapingCron = (req, res) => {
+const startScrapingCron = () => {
     console.log("CRON")
     cron.schedule('*/5 * * * * *', async () => {
         try {
@@ -16,10 +15,7 @@ const startScrapingCron = (req, res) => {
 
                 for (const property of properties) {
 
-                    //status checking and scraping
                     if (property.status === "unstarted") {
-                        //property status changing with axios patch
-                        //change to "in progress" status
                         const changeStatusInProgress = await axios.patch(`http://localhost:3000/properties/updateStatus/${property._id}`,{
                             status: "In progress"
                         });
@@ -39,7 +35,6 @@ const startScrapingCron = (req, res) => {
                         }
                     }
 
-                    //change to "completed" status
                     if (property.status === "In progress") {
                         const changeStatusComplete = await axios.patch(`http://localhost:3000/properties/updateStatus/${property._id}`, {
                             status: "Completed"
