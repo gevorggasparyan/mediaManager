@@ -6,7 +6,7 @@ const propertyControllers = require('./properties.controller');
 const jwtMiddleware = require('../middlewares/jwtMiddleware');
 const emailValidation = require('../validations/emailValidation');
 
-router.post('/addProperty', jwtMiddleware, emailValidation, propertyControllers.addProperty);
+router.post('/addProperty', emailValidation.isEmail, jwtMiddleware, propertyControllers.addProperty);
 router.get('/allProperties', propertyControllers.getAllProperties);
 router.get('/allPropertiesByUser', jwtMiddleware, propertyControllers.getAllPropertiesByUser);
 router.patch('/updateStatus/:propertyId', propertyControllers.updatePropertyStatus);
