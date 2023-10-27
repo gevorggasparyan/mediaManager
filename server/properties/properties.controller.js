@@ -1,7 +1,11 @@
 const propertiesService = require('./properties.service');
+const { validationResult } = require('express-validator');
 
 exports.addProperty = async (req, res) => {
   try {
+    const errors = validationResult(req)
+    console.log("errors:  ",errors);
+    
     const {email, password, accountType} = req.body;
     const userId = req.user.userId;
 
