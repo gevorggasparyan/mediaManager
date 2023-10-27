@@ -17,8 +17,8 @@ const mongoose = require('mongoose');
 const PropertySchema = new mongoose.Schema({
   email: String,
   password: {
-    iv: String, // Add a field for the IV
-    encryptedData: String, // Add a field for the encrypted data
+    iv: String, // field for the IV
+    encryptedData: String, // field for the encrypted pass
   },
   accountType: {type: String, required: true}, // tumblr, google, etc.
   status: {type: String, default: 'unstarted'},
