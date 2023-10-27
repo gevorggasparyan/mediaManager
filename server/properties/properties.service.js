@@ -1,14 +1,30 @@
 const Property = require('./properties.model');
+const { encrypt } = require("../libs/crypting");
+
+// exports.addProperty = async ({ email, password, accountType, userId }) => {
+//     const hashedPass = encrypt(password);
+//     const tumblrCredential = new Property({
+//         email,
+//         password: hashedPass.encryptedData,
+//         accountType,
+//         status:"unstarted",
+//         userId, //from token
+//     });
+//
+//     return tumblrCredential.save();
+// }
 
 exports.addProperty = async ({ email, password, accountType, userId }) => {
-    // const hashedPassword = await bcrypt.hash(password, 10);
+    const { iv, encryptedData } = encrypt(password); // Generate IV during encryption
     const tumblrCredential = new Property({
         email,
-        password,
+        password: {
+            iv,            // Store the IV
+            encryptedData  // Store the encrypted data
+        },
         accountType,
-        status:"unstarted",
-        userId, //from token
-        //  status: //unstarted -> in-progress -> completed
+        status: "unstarted",
+        userId, // from token
     });
 
     return tumblrCredential.save();
