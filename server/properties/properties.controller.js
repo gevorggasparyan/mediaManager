@@ -1,11 +1,15 @@
 const propertiesService = require('./properties.service');
 const { validationResult } = require('express-validator');
+const {isEmpty} = require("validator");
 
 exports.addProperty = async (req, res) => {
   try {
     const errors = validationResult(req)
     console.log("errors:  ",errors);
-    
+
+    if (!errors.isEmpty()) {
+      throw new Error();
+    }
     const {email, password, accountType} = req.body;
     const userId = req.user.userId;
 
@@ -13,7 +17,11 @@ exports.addProperty = async (req, res) => {
 
     res.status(201).json({message: 'Property is added', newProperty});
   } catch (err) {
-    res.status(500).json({error: 'Unable to add property'});
+    if (err instanceof Error && err.name === 'ValidationError') {
+      return res.status(400).json({ errors: err.array() });
+    } else {
+      return res.status(500).json({ error: 'Unable to add property' });
+    }
   }
 };
 
