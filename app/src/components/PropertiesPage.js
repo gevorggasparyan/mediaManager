@@ -2,7 +2,7 @@ import React from 'react';
 import AddProperty from './properties/AddProperty';
 import ScrapedProperties from './properties/ScrapedProperties';
 
-function PropertiesPage() {
+const PropertiesPage = () => {
   return (
     <div>
       <AddProperty /> {}
