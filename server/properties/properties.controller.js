@@ -1,12 +1,10 @@
 const propertiesService = require('./properties.service');
 const { validationResult } = require('express-validator');
-const {isEmpty} = require("validator");
 
 exports.addProperty = async (req, res) => {
   try {
     const errors = validationResult(req)
     console.log("errors:  ",errors);
-
 
     if (!errors.isEmpty()) {
       throw new Error();

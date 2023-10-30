@@ -2,10 +2,17 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('./user.model');
 const userService = require('./user.service');
+const { validationResult } = require('express-validator');
 
 exports.register = async (req, res) => {
   try {
+    const errors = validationResult(req)
     const userData = req.body;
+
+    if (!errors.isEmpty()) {
+      throw new Error();
+    }
+
     const newUser = await userService.createUser(userData);
 
     return res.status(201).json(newUser);
