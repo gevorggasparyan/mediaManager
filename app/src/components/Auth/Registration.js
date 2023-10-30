@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Registration = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
+  const handleRegistration = async () => {
     try {
-      const response = await axios.post('/user/login', { username, password });
-      const token = response.data.token;
+      const response = await axios.post('http://localhost:3000/user/registration', { username, password });
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Registration failed:', error);
     }
   };
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Registration</h2>
       <input
         type="text"
         placeholder="Username"
@@ -29,9 +28,9 @@ const Login = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleRegistration}>Register</button>
     </div>
   );
 };
 
-export default Login;
+export default Registration;

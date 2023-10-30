@@ -5,5 +5,6 @@ const router = express.Router();
 const scrapedPropertiesController = require('./scraped-properties.controller');
 
 router.post('/addScrapedData', scrapedPropertiesController.addScrapedProperties);
+router.get('/allScrapedData/:propertyId', scrapedPropertiesController.getScrapedPropertiesByPropertyId);
 
 module.exports = router;

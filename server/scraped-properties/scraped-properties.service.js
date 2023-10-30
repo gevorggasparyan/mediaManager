@@ -12,6 +12,8 @@ exports.addScrapedProperties = async (accountType, userName, accountUrl, propert
   return scrapedProperties.save();
 };
 
-exports.getAllScrapedProperties = async (query) => {
-  return accountModel.find(query);
+exports.getScrapedPropertiesByPropertyId = async (propertyId) => {
+    return accountModel.find({propertyId});
 };
+
+
