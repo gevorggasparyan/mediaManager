@@ -1,8 +1,9 @@
-const { body, validationResult } = require('express-validator');
+const { body } = require('express-validator');
 
-const emailValidation = {
-   isEmail: [ body('email').isEmail()
-  .withMessage('Invalid email format')]
-};
+const emailValidation = [
+   body('email')
+       .isEmail()
+       .withMessage('Invalid email format')
+];
 
 module.exports = emailValidation;
