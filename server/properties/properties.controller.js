@@ -27,7 +27,7 @@ exports.addProperty = async (req, res) => {
 exports.getAllPropertiesByUser = async (req, res) => {
   try {
     const userId = req.user.userId;
-    const allProperties = await propertiesService.getAllProperties(userId);
+    const allProperties = await propertiesService.getAllProperties({userId});
     res.json(allProperties);
   } catch (err) {
     console.error(err);

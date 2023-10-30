@@ -4,10 +4,12 @@ import axios from 'axios';
 const Registration = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleRegistration = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/user/registration', { username, password });
+      const response = await axios.post('http://localhost:3000/user/registration', { username, password , email });
+      console.log(response);
     } catch (error) {
       console.error('Registration failed:', error);
     }
@@ -27,6 +29,12 @@ const Registration = () => {
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <button onClick={handleRegistration}>Register</button>
     </div>

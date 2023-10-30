@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Login from '../components/login';
-import Registration from '../components/registration';
+import Login from '../components/Auth/Login';
+import Registration from '../components/Auth/Registration';
 
-const App = () => {
+const Routers = () => {
   return (
     <Routes>
       <Route path="/login" component={Login} />
@@ -13,4 +13,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Routers;
