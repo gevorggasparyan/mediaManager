@@ -6,15 +6,11 @@ function ScrapedProperties() {
   const [properties, setProperties] = useState([]);
 
   const handleFetchScrapedData = () => {
-    // Trigger fetching scraped data when the button is clicked
     setScrapedData([]);
-    // You can set the propertyId based on user selection, but the initial value should be set here
-    setPropertyId(properties[0]._id); // Example: setting it to the first property's ID
+    setPropertyId(properties[0]._id);
   };
 
-
   useEffect(() => {
-    // Fetch the properties for the currently logged-in user
     fetch('http://localhost:3000/properties/allPropertiesByUser', {
       method: 'GET',
       headers: {
@@ -23,7 +19,7 @@ function ScrapedProperties() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setProperties(data); // Set user properties
+        setProperties(data);
         if (data && data.length > 0) {
           setPropertyId(data[0]._id);
         }
