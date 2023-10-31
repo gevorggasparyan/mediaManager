@@ -91,19 +91,22 @@ Create a `.env` file in the server directory with the following variables:
 
 ### Adding Properties
 
-1. After logging in, navigate to the "Add Property" page.
-2. Enter your Tumblr credentials (username and password).
-3. Save the credentials.
+1. After logging in, you will be navigated to Properties page.
+2. Enter your properties (username, password and account type(e.g. Tumblr)) in "Add Property" form.
+3. Save the credentials by clicking "Add property" button.
 
 ### Running the Scraper
 
-Once Tumblr credentials are added, scraper automatically will run on server.
+Once properties are added, scraper automatically will run on server and after refreshing the page scraped data will
+be able to view.
 
 ### Viewing Scraped Properties
 
 Scraped properties are available in Scraped Properties window. User can select the property, whose scraped data need to view.
+
 ## 5. Testing
 Application was tested using Postman. Sending requests and checking for correct responses.
+
 ## 6. API Documentation
 
 ### Postman Collection
@@ -112,13 +115,21 @@ The Postman collection contains API endpoints for the backend. Import the collec
 
 [Postman Collection Link](https://martian-station-600895.postman.co/workspace/New-Team-Workspace~bfa80e8d-aa3e-45e5-b70f-97cc4ef70363/collection/29734070-7a8e72fd-4b07-43ab-8c89-01d60301205c?action=share&creator=29734070)
 
-
 ## 7. Project Structure
 
 ### Directory Structure
 
 - `app`: Contains the React frontend application.
+- - `public`: Public files like index.html.
+- - `src`: Contains components, routes and default React application necessary files.
 - `server`: Contains the Express backend application.
+- - `config`: Configurations for server-side application instances.
+- - `libs`: Contains custom libraries.
+- - `middleware`: Custom middlewares to use in routes.
+- - `properties`: Properties' functionality.
+- - `scraped-properties`: Scraped properties' functionality.
+- - `users`: Users' functionality.
+- - `validations`: Validations to use in routes.
 
 ## 8. Contributing
 
