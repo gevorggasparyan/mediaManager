@@ -8,10 +8,6 @@ app.use('/user', require('./users/user.routes'));
 app.use('/properties', require('./properties/properties.routes'));
 app.use('/scrapedData', require('./scraped-properties/scraped-properties.routes'));
 require('../server/config/mongoConfig');
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
