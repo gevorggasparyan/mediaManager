@@ -49,6 +49,7 @@ Media Manager is a web application that allows users to save their Tumblr creden
 
 - Node.js and npm installed
 - MongoDB installed and running
+- Docker installed
 - Internet connection (for Playwright scraping)
 
 ### Installation Steps
@@ -58,6 +59,8 @@ Media Manager is a web application that allows users to save their Tumblr creden
 3. Install dependencies for both React and Express applications.
 
 ## 3. Configuration
+
+
 ### MongoDB Configuration
 Make sure you have MongoDB running on port 27017.
 
