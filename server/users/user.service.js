@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 exports.createUser = async (userData) => {
   try {
     const {username, password, email} = userData;
-
+    console.log(userData);
     const candidate = await User.findOne({email});
     if (candidate) {
       throw new Error(`Username '${candidate.username}' already exists!`);

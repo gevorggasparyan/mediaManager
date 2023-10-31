@@ -4,12 +4,7 @@ function ScrapedProperties() {
   const [scrapedData, setScrapedData] = useState([]);
   const [propertyId, setPropertyId] = useState('');
   const [properties, setProperties] = useState([]);
-
-  const handleFetchScrapedData = () => {
-    setScrapedData([]);
-    setPropertyId(properties[0]._id);
-  };
-
+  
   useEffect(() => {
     fetch('http://localhost:3000/properties/allPropertiesByUser', {
       method: 'GET',
@@ -55,7 +50,7 @@ function ScrapedProperties() {
         </select>
       </div>
       <div>
-        <button onClick={handleFetchScrapedData}>Fetch Scraped Data</button>
+        {/* <button className='button' onClick={handleFetchScrapedData}>Fetch Scraped Data</button> */}
       </div>
       <ul>
         {scrapedData.map((scrapedProperty, index) => (

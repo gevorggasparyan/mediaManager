@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function AddProperty() {
+const AddProperty = () => {
   const [propertyData, setPropertyData] = useState({
     email: '',
     password: '',
@@ -70,7 +70,7 @@ function AddProperty() {
           />
         </div>
         <div>
-          <button onClick={handleAddProperty}>Add Property</button>
+          <button className='button' onClick={handleAddProperty}>Add Property</button>
         </div>
       </form>
     </div>

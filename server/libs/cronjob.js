@@ -9,7 +9,7 @@ const startScrapingCron = () => {
     try {
       const response = await axios.get('http://localhost:3000/properties/allProperties');
 
-      console.log('CRONJOB WORKING');
+      // console.log('CRONJOB WORKING');
 
       if (response.status === 200) {
         const properties = response.data;

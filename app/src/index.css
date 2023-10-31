@@ -28,7 +28,7 @@ input {
   border-radius: 3px;
 }
 
-button {
+.button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,6 +59,7 @@ ul {
 
 li {
   border: 1px solid #ccc;
+  border-radius: 3px;
   margin-bottom: 10px;
   padding: 10px;
   background-color: #f5f5f5;
@@ -75,3 +76,16 @@ select {
   border-radius: 3px;
   cursor: pointer;
 }
+
+.logout-button {
+  display: block;
+  align-self: end;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #0074D9;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+

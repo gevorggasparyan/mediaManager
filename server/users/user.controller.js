@@ -6,17 +6,19 @@ const { validationResult } = require('express-validator');
 
 exports.register = async (req, res) => {
   try {
+    console.log("enter");
     const errors = validationResult(req)
     const userData = req.body;
 
     if (!errors.isEmpty()) {
-      throw new Error();
+      return res.status(400).json({ errors: errors.array() });
     }
 
     const newUser = await userService.createUser(userData);
-
+    console.log('end of register');
     return res.status(201).json(newUser);
   } catch (error) {
+    console.error(error);
     return res.status(500).json({error: 'Failed to create user'});
   }
 };

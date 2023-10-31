@@ -36,7 +36,7 @@ const Registration = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <button onClick={handleRegistration}>Register</button>
+      <button className='button' onClick={handleRegistration}>Register</button>
     </div>
   );
 };

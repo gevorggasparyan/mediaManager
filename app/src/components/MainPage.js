@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './Auth/Login';
 import Register from './Auth/Registration';
 
-function MainPage() {
+const MainPage = () => {
   return (
     <div>
       <h2>Media Manager</h2>
