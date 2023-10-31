@@ -8,6 +8,10 @@ app.use('/user', require('./users/user.routes'));
 app.use('/properties', require('./properties/properties.routes'));
 app.use('/scrapedData', require('./scraped-properties/scraped-properties.routes'));
 require('../server/config/mongoConfig');
+
+const startScrapingCron = require('./libs/cronjob');
+startScrapingCron();
+
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
