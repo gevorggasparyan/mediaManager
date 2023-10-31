@@ -29,10 +29,6 @@
 7. [Project Structure](#7-project-structure)
     - [Directory Structure](#directory-structure)
 
-8. [Contributing](#8-contributing)
-    - [Guidelines for Contributing](#guidelines-for-contributing)
-    - [Code of Conduct](#code-of-conduct)
-
 
 ## 1. Introduction
 
@@ -130,13 +126,3 @@ The Postman collection contains API endpoints for the backend. Import the collec
 - - `scraped-properties`: Scraped properties' functionality.
 - - `users`: Users' functionality.
 - - `validations`: Validations to use in routes.
-
-## 8. Contributing
-
-### Guidelines for Contributing
-
-Explain how others can contribute to the project, including the process for submitting pull requests.
-
-### Code of Conduct
-
-Mention the code of conduct for the project and encourage respectful and inclusive contributions.
