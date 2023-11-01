@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://172.17.0.1:27017/mediaManagerProject', {
+mongoose.connect('mongodb://mongodb:27017/mediaManagerProject', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {

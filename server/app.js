@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const { fork } = require('child_process');
 
 app.use(express.json());
 app.use(cors());
@@ -9,8 +10,14 @@ app.use('/properties', require('./properties/properties.routes'));
 app.use('/scrapedData', require('./scraped-properties/scraped-properties.routes'));
 require('../server/config/mongoConfig');
 
-const startScrapingCron = require('./libs/cronjob');
-startScrapingCron();
+const childProcess = fork('./libs/cronjob.js');
+childProcess.on('message', (message) => {
+  console.log('Child process message: ', message);
+});
+childProcess.on(
+  'exit', (code) => {
+  console.log(`Child process exited with code ${code}`);
+});
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);

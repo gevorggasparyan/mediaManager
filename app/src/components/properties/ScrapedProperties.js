@@ -4,7 +4,7 @@ function ScrapedProperties() {
   const [scrapedData, setScrapedData] = useState([]);
   const [propertyId, setPropertyId] = useState('');
   const [properties, setProperties] = useState([]);
-  
+
   useEffect(() => {
     fetch('http://localhost:3000/properties/allPropertiesByUser', {
       method: 'GET',

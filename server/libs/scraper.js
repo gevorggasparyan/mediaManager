@@ -1,10 +1,9 @@
-const {firefox} = require('playwright');
+const {chromium} = require('playwright');
 
 async function scrapeTumblrAccountUrl(email, password) {
-  const browser = await firefox.launch({headless: false});
+  const browser = await chromium.launch({ headless: true, executablePath: '/usr/bin/chromium-browser'});
   const page = await browser.newPage();
 
-  // const decryptedPass = decryption...
   try {
     await page.goto('https://www.tumblr.com/login');
     console.log('went to browser');
@@ -36,4 +35,3 @@ async function scrapeTumblrAccountUrl(email, password) {
 }
 
 module.exports = scrapeTumblrAccountUrl;
-

@@ -9,6 +9,13 @@ services:
     networks:
       - mediaManagerNetwork
 
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.39.0-jammy
+    depends_on:
+      - backend
+    networks:
+      - mediaManagerNetwork
+
   frontend:
     build:
       context: ./app

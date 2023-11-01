@@ -11,6 +11,7 @@
     - [Installation Steps](#installation-steps)
 
 3. [Configuration](#3-configuration)
+    - [Run](#run-)
     - [MongoDB Configuration](#mongodb-configuration)
     - [Environment Variables](#environment-variables)
 
@@ -60,6 +61,11 @@ Media Manager is a web application that allows users to save their Tumblr creden
 
 ## 3. Configuration
 
+### Run 
+For the very first time run this command:
+```shell
+docker-compose up --build
+```
 
 ### MongoDB Configuration
 Make sure you have MongoDB running on port 27017.
@@ -74,6 +80,8 @@ Create a `.env` file in the server directory with the following variables:
 -  `JWT_SECRET_KEY`: Secret key for JWT token generation.
 
 ## 4. Usage
+[Go to website](http://localhost:3000/)
+
 
 ### User Registration
 
