@@ -4,9 +4,9 @@ const router = express.Router();
 /* eslint-enable new-cap */
 const propertyControllers = require('./properties.controller');
 const jwtMiddleware = require('../middlewares/jwtMiddleware');
-const emailValidation = require('../validations/emailValidation');
+const propertyValidation = require('../validations/propertyValidation');
 
-router.post('/addProperty', emailValidation, jwtMiddleware, propertyControllers.addProperty);
+router.post('/addProperty', propertyValidation, jwtMiddleware, propertyControllers.addProperty);
 router.get('/allProperties', propertyControllers.getAllProperties);
 router.get('/allPropertiesByUser', jwtMiddleware, propertyControllers.getAllPropertiesByUser);
 router.patch('/updateStatus/:propertyId', propertyControllers.updatePropertyStatus);

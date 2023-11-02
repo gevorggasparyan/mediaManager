@@ -7,7 +7,7 @@ exports.addProperty = async (req, res) => {
     console.log("errors:  ",errors);
 
     if (!errors.isEmpty()) {
-      throw new Error();
+      return res.status(400).json({ errors: errors.array() });
     }
     const {email, password, accountType} = req.body;
     const userId = req.user.userId;
