@@ -1,5 +1,6 @@
 const propertiesService = require('./properties.service');
 const { validationResult } = require('express-validator');
+const User = require("../users/user.model");
 
 exports.addProperty = async (req, res) => {
   try {
@@ -12,9 +13,16 @@ exports.addProperty = async (req, res) => {
     const {email, password, accountType} = req.body;
     const userId = req.user.userId;
 
-    const newProperty = await propertiesService.addProperty({email, password, accountType, userId});
+    const user = await User.findOne({_id: userId});
+    console.log("!!!!!!!!!!!!!!!!!!!!!!user activation",user.isActivated);
 
-    res.status(201).json({message: 'Property is added', newProperty});
+    if(user.isActivated) {
+      const newProperty = await propertiesService.addProperty({email, password, accountType, userId});
+      res.status(201).json({message: 'Property is added', newProperty});
+    }
+    else {
+      res.status(400).json({error: "Your account is not activated!"});
+    }
   } catch (err) {
     if (err instanceof Error && err.name === 'ValidationError') {
       return res.status(400).json({ errors: err.array() });
