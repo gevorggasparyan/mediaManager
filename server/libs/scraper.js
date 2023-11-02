@@ -1,7 +1,7 @@
-const {firefox} = require('playwright');
+const {chromium} = require('playwright');
 
 async function scrapeTumblrAccountUrl(email, password) {
-  const browser = await firefox.launch({ headless: false});
+  const browser = await chromium.launch({ headless: true, executablePath:'/usr/bin/chromium' });
   const page = await browser.newPage();
 
   try {

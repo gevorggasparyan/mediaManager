@@ -58,5 +58,5 @@ const startScrapingCron = () => {
   });
 };
 
-module.exports = startScrapingCron;
-// startScrapingCron();
+// module.exports = startScrapingCron;
+startScrapingCron();

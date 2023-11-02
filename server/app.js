@@ -14,7 +14,7 @@ app.get('*', (req,res) => {
 })
 require('../server/config/mongoConfig');
 
-const childProcess = fork('./libs/cronjob.js');
+const childProcess = fork(__dirname +  '/libs/cronjob.js');
 childProcess.on('message', (message) => {
   console.log('Child process message: ', message);
 });

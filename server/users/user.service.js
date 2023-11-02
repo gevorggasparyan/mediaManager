@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const uuid = require('uuid');
+const crypting = require('../libs/crypting');
+const {encrypt} = require("../libs/crypting");
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
@@ -19,20 +21,30 @@ exports.createUser = async (userData) => {
     const {username, password, email} = userData;
     console.log(userData);
     const candidate = await User.findOne({email});
+    console.log("found")
     if (candidate) {
       throw new Error(`Username '${candidate.username}' already exists!`);
     }
+    console.log("no errors")
+    // const hashedPassword = await bcrypt.hash(password, 10);
+    // console.log("hashed pass")
+    // console.log(hashedPassword)
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const {iv, encryptedData} = encrypt(password);
     const activationLink = uuid.v4();
-
+    console.log("activation link:",activationLink)
     const user = new User({
       username,
-      password: hashedPassword,
+      password: {
+        iv, // Store the IV
+        encryptedData, // Store the encrypted data
+      },
       email: email,
       isActivated: false,
       activationLink,
     });
+
+    console.log("user:",user)
 
     await user.save();
 

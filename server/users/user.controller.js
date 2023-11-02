@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('./user.model');
 const userService = require('./user.service');
 const { validationResult } = require('express-validator');
+const {decrypt} = require("../libs/crypting");
 
 exports.register = async (req, res) => {
   try {
@@ -13,6 +14,7 @@ exports.register = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+    console.log("middle")
 
     const newUser = await userService.createUser(userData);
     console.log('end of register');
@@ -29,9 +31,10 @@ exports.login = async (req, res) => {
   try {
     const user = await User.findOne({username});
 
+    const originalPassword = decrypt(user.password.encryptedData, user.password.iv);
     if (!user) {
       return res.status(401).json({message: 'No user found'});
-    } else if (!(await bcrypt.compare(password, user.password))) {
+    } else if (originalPassword !== password) {
       return res.status(401).json({message: 'Wrong password'});
     }
 
