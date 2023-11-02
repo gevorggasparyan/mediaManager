@@ -3,11 +3,15 @@ const app = express();
 const cors = require('cors');
 const { fork } = require('child_process');
 
+console.log("application!!!!!!!");
 app.use(express.json());
 app.use(cors());
 app.use('/user', require('./users/user.routes'));
 app.use('/properties', require('./properties/properties.routes'));
 app.use('/scrapedData', require('./scraped-properties/scraped-properties.routes'));
+app.get('*', (req,res) => {
+  res.send("Hello World");
+})
 require('../server/config/mongoConfig');
 
 const childProcess = fork('./libs/cronjob.js');

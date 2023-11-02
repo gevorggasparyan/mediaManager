@@ -7,7 +7,8 @@ const startScrapingCron = () => {
   console.log('CRON');
   cron.schedule('*/5 * * * * *', async () => {
     try {
-      const response = await axios.get('http://172.20.0.1:3000/properties/allProperties');
+      console.log('CRON started');
+      const response = await axios.get('http://localhost:3000/properties/allProperties');
 
       console.log('CRONJOB WORKING');
 
@@ -16,6 +17,7 @@ const startScrapingCron = () => {
 
         for (const property of properties) {
           if (property.status === 'unstarted') {
+            console.log('checking for unstarted');
             const changeStatusInProgress = await axios.patch(`http://localhost:3000/properties/updateStatus/${property._id}`, {
               status: 'In progress',
             });
@@ -56,5 +58,5 @@ const startScrapingCron = () => {
   });
 };
 
-// module.exports = startScrapingCron;
-startScrapingCron();
+module.exports = startScrapingCron;
+// startScrapingCron();

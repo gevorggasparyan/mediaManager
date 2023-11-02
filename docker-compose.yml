@@ -8,6 +8,8 @@ services:
       - "3000:3000"
     networks:
       - mediaManagerNetwork
+    volumes:
+      - .:/server
 
   playwright:
     image: mcr.microsoft.com/playwright:v1.39.0-jammy
