@@ -82,8 +82,7 @@ Create a `.env` file in the server directory with the following variables:
 -  `JWT_SECRET_KEY`: Secret key for JWT token generation.
 
 ## 4. Usage
-[Go to website](http://localhost:3000/)
-
+[Go To MediaManager](http://localhost:3001/)
 
 ### User Registration
 
