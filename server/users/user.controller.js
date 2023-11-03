@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('./user.model');
 const userService = require('./user.service');
@@ -7,17 +6,14 @@ const {decrypt} = require("../libs/crypting");
 
 exports.register = async (req, res) => {
   try {
-    console.log("enter");
     const errors = validationResult(req)
     const userData = req.body;
 
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    console.log("middle")
 
     const newUser = await userService.createUser(userData);
-    console.log('end of register');
     return res.status(201).json(newUser);
   } catch (error) {
     console.error(error);
@@ -30,10 +26,9 @@ exports.login = async (req, res) => {
 
   try {
     const user = await User.findOne({username});
-
     const originalPassword = decrypt(user.password.encryptedData, user.password.iv);
     if (!user) {
-      return res.status(401).json({message: 'No user found'});
+      return res.status(403).json({message: 'No user found'});
     } else if (originalPassword !== password) {
       return res.status(401).json({message: 'Wrong password'});
     }

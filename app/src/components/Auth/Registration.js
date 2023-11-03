@@ -9,6 +9,11 @@ const Registration = () => {
   const handleRegistration = async () => {
     try {
       const response = await axios.post('http://localhost:3000/user/registration', { username, password , email });
+      if (response.status === 400) {
+        const result = await response.json();
+        console.log("Response: ",result);
+        alert(result.error);
+      }
       console.log(response);
     } catch (error) {
       console.error('Registration failed:', error);

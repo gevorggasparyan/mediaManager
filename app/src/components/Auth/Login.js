@@ -11,6 +11,14 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:3000/user/login', { username, password });
       const token = response.data.token;
+
+      if (response.status === 403) {
+        const result = await response.json();
+        alert(result.error);
+      }
+      else if (response.status === 401) {
+
+      }
       localStorage.setItem('authToken', token)
       navigate('/properties');
     } catch (error) {

@@ -14,14 +14,13 @@ exports.addProperty = async (req, res) => {
     const userId = req.user.userId;
 
     const user = await User.findOne({_id: userId});
-    console.log("!!!!!!!!!!!!!!!!!!!!!!user activation",user.isActivated);
 
     if(user.isActivated) {
       const newProperty = await propertiesService.addProperty({email, password, accountType, userId});
       res.status(201).json({message: 'Property is added', newProperty});
     }
     else {
-      res.status(400).json({error: "Your account is not activated!"});
+      res.status(401).json({error: "Your account is not activated!"});
     }
   } catch (err) {
     if (err instanceof Error && err.name === 'ValidationError') {

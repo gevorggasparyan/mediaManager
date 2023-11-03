@@ -27,9 +27,14 @@ const AddProperty = () => {
         body: JSON.stringify(propertyData),
       });
 
-      if (response.ok) {
+      if (response.status === 401) {
+        const result = await response.json();
+        console.log('Response:', result);
+        alert(result.error);
+      } else if (response.ok) {
         const result = await response.json();
         console.log('Property added:', result);
+        alert('Property Added. We are scraping data...');
       } else {
         console.error('Failed to add property:', response.status);
       }
